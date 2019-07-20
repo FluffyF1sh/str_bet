@@ -19,7 +19,7 @@ xhr.addEventListener("readystatechange", function() {
 	s2.textContent = (arr[2].replace('"totalUsers"',"Ставочников"));
   }
 });
-setTimeout("window.location.reload()", 215000);
+setTimeout("window.location.reload()", 5000);
 all.appendChild(s); 
 all.appendChild(s1);
 all.appendChild(s2);

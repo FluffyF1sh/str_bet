@@ -26,11 +26,16 @@ xhr.addEventListener("readystatechange", function() {
 		title.textContent = ' ';
 		if(check1 == arr[14]){
 			winRes = arr[12];
+			winRes.replace('"title":', '').replace('"','').replace('"','');
 		}
 		else if(check2 == arr[19]){
 			winRes = arr[17];
+			winRes.replace('"title":', '').replace('"','').replace('"','');
 		}
-		sum.textContent = 'Соревнование не проводится. ' +'Прошлый победитель: ' + winRes.replace('"title":', '').replace('"','').replace('"','');
+		else if(check1 !== arr[14] && check2 !== arr[19]){
+			winRes = "нет";
+		}
+		sum.textContent = 'Соревнование не проводится. ' +'Прошлый победитель: ' + winRes;
 		users.textContent = ' ';
 		opt1.textContent = ' ';
 		opt2.textContent = ' ';

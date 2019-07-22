@@ -10,7 +10,7 @@ var opt2 = document.createElement('div');
 var arr;
 xhr.open("GET", "https://api.streamelements.com/kappa/v2/contests/5d26328e6b84c45a4fe1845a");
 xhr.setRequestHeader("accept", "application/json");
-xhr.timeout = 1000;
+xhr.timeout = 5000;
 xhr.onload = function() {
   if (this.readyState === this.DONE) {
     //console.log(this.response);
@@ -24,7 +24,7 @@ xhr.onload = function() {
 		var check1 = '"winner":true}';
 		var check2 = '"winner":true}]';
 		var winRes;
-		console.log(arr[14],arr[19]);
+		//console.log(arr[14],arr[19]);
 		if(act == arr[0]){
 			if(check1 == arr[14]){
 				winRes = arr[12];
@@ -50,7 +50,7 @@ xhr.onload = function() {
 			opt1.textContent = ("!bet " + arr[12].replace('"command":', "").replace('"', '').replace('"}', "") + " [сумма]");
 			opt2.textContent = ("!bet " + arr[17].replace('"command":', "").replace('"', '').replace('"}]', "") + " [сумма]");;
 		}
-		console.log(check1, check2);
+		//console.log(check1, check2);
 	}
     xhr.ontimeout = function(){
     	var ref = all;

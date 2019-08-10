@@ -21,6 +21,7 @@ xhr.addEventListener("readystatechange", function () {
 			nxhr.addEventListener("readystatechange", function(){
 				if(nxhr.readyState == 4){
 					console.log(nxhr.response);
+					console.clear();
 					xhr = nxhr;
 					if (xhr.readyState === xhr.DONE){
 	    title.textContent =  xhr.response;
@@ -68,7 +69,7 @@ xhr.addEventListener("readystatechange", function () {
 				}
 			});
 	}
-	setInterval(update, 5000);
+	setInterval(update, 1000);
  	
 });
 //setInterval(all, 5000);

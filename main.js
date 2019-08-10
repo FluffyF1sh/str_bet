@@ -10,25 +10,33 @@ var opt2 = document.createElement('div');
 var arr;
 xhr.open("GET", "https://api.streamelements.com/kappa/v2/contests/5d26328e6b84c45a4fe1845a");
 xhr.setRequestHeader("accept", "application/json");
-xhr.timeout = 5000;
-xhr.onload = function() {
-  if (this.readyState === this.DONE) {
-    //console.log(this.response);
-        title.textContent =  this.response;
-		sum.textContent = this.response;
-		users.textContent = this.response;
-		opt1.textContent = this.response;
-		opt2.textContent = this.response;
-		arr = this.response.split(',');
-		var act = '{"active":null';
-		var check1 = '"winner":true}';
-		var check2 = '"winner":true}]';
+xhr.send(data);
+xhr.addEventListener("readystatechange", function () {
+	function update(){
+			var ndata = null;
+			var nxhr = new XMLHttpRequest();					
+			nxhr.open("GET", "https://api.streamelements.com/kappa/v2/contests/5d26328e6b84c45a4fe1845a");
+			nxhr.setRequestHeader("accept", "application/json");
+			nxhr.send(ndata);
+			nxhr.addEventListener("readystatechange", function(){
+				if(nxhr.readyState == 4){
+					console.log(nxhr.response);
+					xhr = nxhr;
+					if (xhr.readyState === xhr.DONE){
+	    title.textContent =  xhr.response;
+		sum.textContent = xhr.response;
+		users.textContent = xhr.response;
+		opt1.textContent = xhr.response;
+		opt2.textContent = xhr.response;
+		arr = xhr.response.split(',');
+		var act = `{"active":null`;
+		var check1 = `"winner":true}`;
+		var check2 = `"winner":true}]`;
 		var winRes;
-		//console.log(arr[14],arr[19]);
 		if(act == arr[0]){
 			if(check1 == arr[14]){
 				winRes = arr[12];
-				winRes = winRes.replace('"title":','').replace('"','').replace('"','');
+				winRes = winRes.replace(`"title":`,``).replace(`"`,``).replace(`"`,``);
 			}
 			else if(check2 == arr[19]){
 				winRes = arr[17];
@@ -50,21 +58,17 @@ xhr.onload = function() {
 			opt1.textContent = ("!bet " + arr[12].replace('"command":', "").replace('"', '').replace('"}', "") + " [сумма]");
 			opt2.textContent = ("!bet " + arr[17].replace('"command":', "").replace('"', '').replace('"}]', "") + " [сумма]");;
 		}
-		//console.log(check1, check2);
-	}
-    xhr.ontimeout = function(){
-    	var ref = all;
-    	document.getElementById('upd').innerHTML = ref;
-    	all = ref;
-    	return all;
-	}
+		
+	} 
 	all.appendChild(title); 
 	all.appendChild(sum);
 	all.appendChild(users);
 	all.appendChild(opt1);
 	all.appendChild(opt2);
-};
-
-
-
-xhr.send(data);
+				}
+			});
+	}
+	setInterval(update, 5000);
+ 	
+});
+//setInterval(all, 5000);

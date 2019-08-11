@@ -1,23 +1,21 @@
 var data = null;
 var xhr = new XMLHttpRequest();
-var all = document.createElement('div');
-document.body.appendChild(all);
 var sum1 = document.createElement('span');
 var sum2 = document.createElement('span');
 var b1 = document.createElement('span');
 var b2 = document.createElement('span');
-sum1.classList.add("nums");
-sum2.classList.add("nums");
-b1.classList.add("nums");
-b2.classList.add("nums");
+sum1.id = "nums";
+sum2.id = "nums";
+b1.id = "nums";
+b2.id = "nums";
 var win1 = document.createElement('div');
 var win2 = document.createElement('div');
 var lose1 = document.createElement('div');
 var lose2 = document.createElement('div');
 var stndby1 = document.createElement('div');
 var stndby2 = document.createElement('div');
-stndby1.classList.add("nums");
-stndby2.classList.add("nums");
+stndby1.id = "nums";
+stndby2.id = "nums";
 var arr;
 win1.id = "win";
 lose1.id = "lose";
@@ -75,22 +73,26 @@ xhr.addEventListener("readystatechange", function () {
 							b1.textContent = (arr[9].replace('"totalUsers":', "").replace('"', '').replace('"', ""));
 							sum2.textContent = (arr[13].replace('{"totalAmount":', ""));
 							b2.textContent = (arr[14].replace('"totalUsers":', "").replace('"', '').replace('"', ""));
-							win1.textContent = `Поставивших на победу:  ` + b1.textContent;
-							win2.textContent = `Сумма на победу: ` + sum1.textContent;
-							lose1.textContent = `Поставивших на поражение: ` + b2.textContent;
-							lose2.textContent = `Сумма на поражение: ` + sum2.textContent;
+							win1.textContent = `Поставивших на победу:  `;
+							win2.textContent = `Сумма на победу: `;
+							lose1.textContent = `Поставивших на поражение: `;
+							lose2.textContent = `Сумма на поражение: `;
 							stndby1.textContent = ' ';
 							stndby2.textContent = ' ';
 					}
 					//console.log(arr[8], arr[9]);
 					//console.log(arr[13],arr[14]);
 				}
-				all.appendChild(stndby1);
-				all.appendChild(stndby2);
-				all.appendChild(win1);
-				all.appendChild(win2);
-				all.appendChild(lose1);
-				all.appendChild(lose2);
+				document.body.appendChild(stndby1);
+				document.body.appendChild(stndby2);
+				document.body.appendChild(win1);
+				win1.appendChild(b1);
+				document.body.appendChild(win2);
+				win2.appendChild(sum1);
+				document.body.appendChild(lose1);
+				lose1.appendChild(b2);
+				document.body.appendChild(lose2);
+				lose2.appendChild(sum2);
 			}
 		});
 	}

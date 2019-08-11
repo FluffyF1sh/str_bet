@@ -51,14 +51,14 @@ xhr.addEventListener("readystatechange", function () {
 						}
 						else if (check2 == arr[19]) {
 							winRes = arr[17];
-							winRes = winRes.replace('"title":', '').replace('"', '').replace('"', '');
+							winRes = winRes.replace('"title":', 'Выигравшая опция: ').replace('"', '').replace('"', '');
 						}
 						else if (check1 !== arr[14] && check2 !== arr[19]) {
 							winRes = "Ставку отменили";
 						}
 						//title.textContent = ' ';
 						stndby1.textContent = 'Ставок нет.';
-						stndby2.textContent = 'Выигравшая опция: ' + winRes + '.';
+						stndby2.textContent = winRes + '.';
 						win1.textContent = ' ';
 						lose1.textContent = ' ';
 						win2.textContent = ' ';

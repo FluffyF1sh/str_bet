@@ -47,11 +47,11 @@ xhr.addEventListener("readystatechange", function () {
 					if (act == arr[0]) {
 						if (check1 == arr[14]) {
 							winRes = arr[12];
-							winRes = winRes.replace(`"title":`, `Выигравшая опция: `).replace(`"`, ``).replace(`"`, ``);
+							winRes = winRes.replace(`"title":`, `Прошлая `).replace(`"`, ``).replace(`"`, ``);
 						}
 						else if (check2 == arr[19]) {
 							winRes = arr[17];
-							winRes = winRes.replace('"title":', 'Выигравшая опция: ').replace('"', '').replace('"', '');
+							winRes = winRes.replace('"title":', 'Прошлая ').replace('"', '').replace('"', '');
 						}
 						else if (check1 !== arr[14] && check2 !== arr[19]) {
 							winRes = "Ставку отменили";
@@ -73,15 +73,15 @@ xhr.addEventListener("readystatechange", function () {
 							b1.textContent = (arr[9].replace('"totalUsers":', "").replace('"', '').replace('"', ""));
 							sum2.textContent = (arr[13].replace('{"totalAmount":', ""));
 							b2.textContent = (arr[14].replace('"totalUsers":', "").replace('"', '').replace('"', ""));
-							win1.textContent = `Поставивших на победу:  `;
-							win2.textContent = `Сумма на победу: `;
-							lose1.textContent = `Поставивших на поражение: `;
-							lose2.textContent = `Сумма на поражение: `;
+							win1.textContent = `Ставок на победу:  `;
+							win2.textContent = `Всего поставлено: `;
+							lose1.textContent = `Ставок на луз: `;
+							lose2.textContent = `Всего поставлено: `;
 							stndby1.textContent = ' ';
 							stndby2.textContent = ' ';
 					}
-					//console.log(arr[8], arr[9]);
-					//console.log(arr[13],arr[14]);
+					//console.log(arr[2], arr[3]);
+					//arr[2] это общая сумма ставок
 				}
 				document.body.appendChild(stndby1);
 				document.body.appendChild(stndby2);
